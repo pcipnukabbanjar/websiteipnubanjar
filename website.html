@@ -323,23 +323,23 @@
   .lightbox-overlay{display:none; position:fixed; inset:0; z-index:220; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; padding:24px;}
   .lightbox-overlay.show{display:flex;}
   .lightbox-overlay img{max-width:92vw; max-height:86vh; border-radius:8px;}
-  .lightbox-close{position:absolute; top:20px; right:26px; color:#fff; font-size:2rem; cursor:pointer; background:none; border:none;}
+  .lightbox-close{position:absolute; top:20px; right:26px; color:#f0a70a; font-size:2rem; cursor:pointer; background:none; border:none;}
 
   .toast{
-    position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--forest-deep); color:#F4EFE0;
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--forest-deep); color:#f4f3f0;
     padding:10px 20px; border-radius:20px; font-size:13px; opacity:0; pointer-events:none; transition:opacity .3s; z-index:300;
   }
   .toast.show{opacity:1;}
 
   /* ---------- Footer ---------- */
-  footer{background:var(--forest-deep); color:rgba(251,246,234,0.82); padding:56px 28px 26px;}
+  footer{background:var(--forest-deep); color:rgba(248, 176, 8, 0.82); padding:56px 28px 26px;}
   .footer-inner{max-width:1180px; margin:0 auto;}
-  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(232,200,116,0.18);}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(240, 173, 4, 0.957);}
   .footer-grid h5{font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); margin-bottom:14px;}
   .footer-grid ul{list-style:none; margin:0; padding:0;}
   .footer-grid li{margin-bottom:9px; font-size:0.87rem;}
   .footer-grid a:hover{color:var(--gold-light);}
-  .footer-brand p{font-size:0.87rem; line-height:1.6; max-width:34ch; margin-top:12px; color:rgba(251,246,234,0.65);}
+  .footer-brand p{font-size:0.87rem; line-height:1.6; max-width:34ch; margin-top:12px; color:rgba(240, 170, 7, 0.932);}
   .footer-brand .brand .b1{color:var(--cream);}
   .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-top:20px; font-size:0.76rem; color:rgba(251,246,234,0.5); font-family:'JetBrains Mono',monospace;}
 
@@ -422,7 +422,6 @@
       <div>
         <span class="eyebrow">Organisasi</span>
         <h2>Struktur Pimpinan Cabang</h2>
-        <p>Susunan Pimpinan Cabang IPNU Kabupaten Banjar masa khidmat 2026&ndash;2028. Masuk sebagai admin untuk mengubah nama, jabatan, atau menambah/menghapus anggota.</p>
       </div>
     </div>
     <div id="struktur-content"><p class="empty-note">Memuat data pengurus&hellip;</p></div>
@@ -452,7 +451,7 @@
       <div class="service-card">
         <div class="service-icon">&#128240;</div>
         <h3>Ajukan Berita</h3>
-        <p>Koordinasi dengan Lembaga Pers dan Penerbitan (LPP) PC IPNU Kab. Banjar seputar publikasi berita ranting.</p>
+        <p>Koordinasi dengan Lembaga Pers dan Penerbitan (LPP) PC IPNU Kab. Banjar seputar publikasi berita Se-kabupaten Banjar.</p>
         <a href="https://wa.me/6283853209822?text=Assalamu%27alaikum%2C%20saya%20ingin%20mengajukan%20publikasi%20berita%20ke%20LPP%20PC%20IPNU%20Kab.%20Banjar." target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Hubungi via WhatsApp</a>
       </div>
       <div class="service-card">
@@ -503,7 +502,7 @@
       <div>
         <span class="eyebrow">Publikasi</span>
         <h2>Kabar &amp; Agenda Pimpinan Cabang</h2>
-        <p>Dinamika kegiatan dan opini kader dari ranting-ranting IPNU se-Kabupaten Banjar, lengkap dengan agenda kegiatan terdekat.</p>
+        <p>kegiatan dan opini kader dari IPNU se-Kabupaten Banjar, lengkap dengan agenda kegiatan terdekat.</p>
       </div>
       <a href="https://instagram.com/pc.ipnukabbanjar" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Lihat Semua di Instagram</a>
     </div>
@@ -653,7 +652,7 @@
    admin, dan tersimpan otomatis di browser (localStorage) di perangkat
    yang sedang login sebagai admin.
 ===================================================================== */
-const ADMIN_PASSWORD = 'ipnubanjar2026'; // silakan ganti kata sandi ini
+const ADMIN_PASSWORD = 'ipnu1954banjarmanis'; // silakan ganti kata sandi ini
 let isAdmin = false;
 
 /* Logo resmi PC IPNU Kab. Banjar (disematkan sekali, dipakai ulang di header/hero/footer) */
@@ -764,7 +763,7 @@ const DEFAULT_STRUKTUR = {
 
 const DEFAULT_AGENDA = [
   {id:"a1", tanggal:"14", bulan:"JUL 2026", judul:"Rapat Kerja Cabang", lokasi:"Sekretariat PC IPNU, Martapura"},
-  {id:"a2", tanggal:"21", bulan:"JUL 2026", judul:"Pelantikan Pimpinan Ranting Baru", lokasi:"Aula Kecamatan, Kab. Banjar"},
+  {id:"a2", tanggal:"21", bulan:"JUL 2026", judul:"Pelantikan Pimpinan Baru", lokasi:"Aula Kecamatan, Kab. Banjar"},
   {id:"a3", tanggal:"02", bulan:"AGU 2026", judul:"Diklat Kepemimpinan Dasar", lokasi:"Pondok Pesantren mitra"}
 ];
 
