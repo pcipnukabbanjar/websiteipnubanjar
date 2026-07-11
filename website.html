@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PC IPNU Kabupaten Banjar</title>
+<link rel="icon" id="site-favicon" type="image/jpeg">
+<meta name="description" content="Situs resmi Pimpinan Cabang Ikatan Pelajar Nahdlatul Ulama (IPNU) Kabupaten Banjar — struktur pimpinan, layanan kader, berita, agenda, dan galeri kegiatan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest-deep:#0B4429;
+    --forest:#155C3B;
+    --forest-light:#1F7A52;
+    --gold:#C99A3D;
+    --gold-light:#E0B85C;
+    --cream:#F7F4EC;
+    --card:#FFFFFF;
+    --ink:#1B2620;
+    --muted:#5B6B62;
+    --line:#E3DFD2;
+    --maroon:#B3413A;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+
+  /* ---------- Reusable logo mark (no image file required) ---------- */
+  .mark{
+    display:block;
+    border-radius:50%;
+    flex-shrink:0;
+    overflow:hidden;
+    background:var(--cream);
+    box-shadow:0 0 0 2px rgba(224,184,92,0.35);
+  }
+  .mark img{width:100%; height:100%; object-fit:cover; display:block;}
+
+  /* ---------- Admin bar ---------- */
+  .admin-bar{
+    position:sticky; top:0; z-index:60;
+    background:var(--forest-deep); color:#F4EFE0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px; padding:9px 20px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  }
+  .admin-bar .status{opacity:0.85;}
+  .btn-mini{
+    border:1px solid var(--gold-light); background:transparent; color:#F4EFE0;
+    padding:6px 14px; border-radius:20px; font-size:12px; cursor:pointer;
+    font-family:'JetBrains Mono',monospace; transition:background .15s;
+  }
+  .btn-mini:hover{background:rgba(224,184,92,0.15);}
+  .btn-mini.solid{background:var(--gold-light); color:var(--forest-deep); font-weight:700;}
+  .btn-mini.solid:hover{background:#eccf85;}
+  .btn-mini.danger{border-color:#e8a29c; color:#f8d8d4;}
+  .btn-mini.danger:hover{background:rgba(232,162,156,0.18);}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky; top:33px; z-index:50;
+    background:rgba(247,244,236,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 28px; gap:16px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand .mark{width:42px; height:42px; font-size:11px;}
+  .brand-text .b1{font-family:'Fraunces',serif; font-weight:700; font-size:1rem; color:var(--forest-deep);}
+  .brand-text .b2{font-family:'JetBrains Mono',monospace; font-size:0.66rem; letter-spacing:0.08em; color:var(--maroon); text-transform:uppercase;}
+  nav ul{list-style:none; display:flex; gap:24px; margin:0; padding:0;}
+  nav a{font-size:0.85rem; font-weight:600; color:var(--ink); position:relative; padding:4px 0;}
+  nav a::after{content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--gold); transition:width .25s ease;}
+  nav a:hover::after{width:100%;}
+  .nav-toggle{display:none; background:none; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:1rem; cursor:pointer;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(165deg, var(--forest-deep) 0%, var(--forest) 55%, var(--forest-light) 100%);
+    padding:72px 28px 64px; color:#F4EFE0; text-align:center;
+  }
+  .hero .mark{width:66px; height:66px; margin:0 auto 18px; font-size:16px;}
+  .hero h1{font-size:clamp(1.9rem,4vw,2.9rem); line-height:1.15; margin-bottom:10px;}
+  .hero .sub{font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--gold-light);}
+  .hero .masa{margin-top:12px; font-size:13.5px; color:#D9CFA8;}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:26px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; font-weight:700; font-size:0.9rem;
+    border-radius:var(--radius); border:1.5px solid transparent; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease; font-family:inherit;
+  }
+  .btn-primary{background:var(--gold-light); color:var(--forest-deep);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,0.22);}
+  .btn-ghost{border-color:rgba(244,239,224,0.6); color:#F4EFE0;}
+  .btn-ghost:hover{background:rgba(244,239,224,0.12);}
+  .btn-sm{padding:9px 16px; font-size:0.8rem;}
+
+  .facet-divider{
+    width:100%; height:12px;
+    background:linear-gradient(115deg, transparent 48%, var(--gold) 48%, var(--gold) 52%, transparent 52%) 0 0/26px 26px, var(--forest-deep);
+    opacity:0.9;
+  }
+
+  /* ---------- Section shell ---------- */
+  section.block{padding:72px 28px;}
+  .block-inner{max-width:1180px; margin:0 auto;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:36px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding-bottom:22px;
+  }
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem); color:var(--forest-deep);}
+  .section-head p{color:var(--muted); max-width:56ch; margin-top:8px; font-size:0.93rem;}
+
+  /* ---------- Stats ---------- */
+  .stats{background:var(--forest-deep); padding:44px 28px;}
+  .stats-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(5,1fr);}
+  .stat{padding:0 26px; border-left:1px solid rgba(232,200,116,0.22); color:var(--cream);}
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Fraunces',serif; font-size:2.3rem; font-weight:700; color:var(--gold-light); line-height:1;}
+  .stat .label{margin-top:8px; font-weight:700; font-size:0.88rem;}
+  .stat .sub{margin-top:4px; font-size:0.72rem; color:rgba(217,207,168,0.75); font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- Struktur ---------- */
+  .tier-header{display:flex; align-items:center; gap:14px; margin:44px 0 18px;}
+  .tier-header:first-of-type{margin-top:0;}
+  .tier-header .tag{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--forest); font-weight:700; white-space:nowrap;
+    outline:1px dashed transparent; border-radius:3px; padding:2px 4px;
+  }
+  body.editing .tier-header .tag{outline-color:var(--gold);}
+  .tier-header .rule{flex:1; height:1px; background:var(--line);}
+  .kelompok{margin-bottom:26px;}
+  .kelompok-judul{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    font-size:13px; font-weight:700; margin:16px 0 10px; padding-left:12px; border-left:3px solid var(--gold);
+  }
+  .kelompok-judul .title-text{outline:1px dashed transparent; border-radius:3px; padding:1px 4px;}
+  body.editing .kelompok-judul .title-text{outline-color:var(--gold);}
+
+  .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:14px;}
+  .person-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px 14px; display:flex; align-items:center; gap:12px; position:relative;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .person-card:hover{box-shadow:0 8px 20px rgba(11,68,41,0.10); transform:translateY(-2px);}
+  .p-avatar{
+    flex-shrink:0; width:40px; height:40px; border-radius:50%; background:var(--forest-deep);
+    background-size:cover; background-position:center;
+    color:var(--gold-light); font-size:11.5px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .p-info{flex:1; min-width:0;}
+  .p-info h4{font-size:14.5px; font-weight:600;}
+  .p-info .role{font-size:11.5px; color:var(--muted); margin-top:2px;}
+  .p-info [contenteditable="true"]{outline:1px dashed transparent; border-radius:3px; padding:1px 3px;}
+  body.editing .p-info [contenteditable="true"]:hover, body.editing .p-info [contenteditable="true"]:focus{outline-color:var(--gold); background:#fffbf0;}
+  .remove-x{
+    position:absolute; top:6px; right:6px; width:20px; height:20px; border-radius:50%;
+    background:var(--maroon); color:#fff; border:none; font-size:12px; cursor:pointer; line-height:1; display:none;
+  }
+  body.editing .remove-x{display:block;}
+  .add-dashed{
+    border:1.5px dashed var(--forest-light); background:transparent; color:var(--forest);
+    border-radius:var(--radius); padding:12px; font-size:13px; cursor:pointer; width:100%;
+    display:flex; align-items:center; justify-content:center; min-height:56px; font-family:inherit;
+  }
+  .add-dashed:hover{background:rgba(21,92,59,0.06);}
+  .remove-group-btn{
+    font-size:10.5px; color:var(--maroon); background:none; border:1px solid var(--maroon);
+    border-radius:12px; padding:2px 9px; cursor:pointer; display:none; flex-shrink:0;
+  }
+  body.editing .remove-group-btn{display:inline-block;}
+  .add-tier-btn{max-width:280px; margin:26px auto 0;}
+
+  .pembina-box{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px;}
+  .pembina-box p{font-size:13px; color:var(--muted); margin-bottom:4px;}
+  .pembina-box .label{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--forest); font-weight:700; margin:14px 0 8px;}
+  .pembina-box .label:first-child{margin-top:0;}
+  .pembina-list{columns:2; column-gap:32px; font-size:13.5px;}
+  .pembina-list div{break-inside:avoid; padding:3px 0; display:flex; align-items:center; gap:6px;}
+  .pembina-list span[contenteditable="true"]{flex:1;}
+  @media(max-width:600px){.pembina-list{columns:1;}}
+
+  /* ---------- Layanan ---------- */
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:48px;}
+  .service-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 22px; display:flex; flex-direction:column; align-items:flex-start; gap:6px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(15,76,58,0.10);}
+  .service-icon{
+    width:42px; height:42px; margin-bottom:8px; border-radius:11px;
+    background:var(--forest-deep);
+    display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-size:19px;
+  }
+  .service-card h3{font-size:1.08rem; color:var(--forest-deep);}
+  .service-card p{font-size:0.86rem; color:var(--muted); line-height:1.55; margin-bottom:12px;}
+  .service-card .btn{margin-top:auto;}
+
+  .form-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:30px; max-width:640px; margin:0 auto; scroll-margin-top:120px;}
+  .form-card h3{font-size:1.25rem; color:var(--forest-deep); margin:6px 0 8px;}
+  .form-desc{font-size:0.85rem; color:var(--muted); line-height:1.55; margin-bottom:20px;}
+  .field{margin-bottom:14px; display:flex; flex-direction:column; gap:6px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  label{font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--forest-deep); font-weight:500;}
+  input, select, textarea{
+    font-family:'Plus Jakarta Sans', sans-serif; font-size:0.9rem;
+    padding:10px 12px; border:1px solid var(--line); border-radius:8px;
+    background:var(--cream); color:var(--ink); outline:none; width:100%;
+  }
+  input:focus, select:focus, textarea:focus{border-color:var(--gold);}
+  textarea{resize:vertical;}
+  .form-card .btn{width:100%; justify-content:center; margin-top:4px;}
+  .form-note{margin-top:12px; font-size:0.75rem; color:var(--muted); line-height:1.5;}
+  .form-success{
+    display:none; align-items:center; gap:10px;
+    background:rgba(15,76,58,0.08); border:1px solid rgba(15,76,58,0.25);
+    color:var(--forest-deep); padding:11px 13px; font-size:0.83rem; font-weight:600; margin-top:12px;
+  }
+  .form-success.show{display:flex;}
+
+  /* ---------- Berita + Agenda ---------- */
+  .berita-layout{display:grid; grid-template-columns:2fr 1fr; gap:26px; align-items:start;}
+  .news-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .news-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+    display:flex; flex-direction:column; position:relative;
+  }
+  .news-card.lead{grid-column:1/-1;}
+  .news-card .thumb{
+    aspect-ratio:16/9; background:linear-gradient(140deg, var(--forest), var(--forest-deep));
+    background-size:cover; background-position:center; position:relative;
+  }
+  .news-card.lead .thumb{aspect-ratio:16/7;}
+  .news-card .cat{
+    position:absolute; bottom:10px; left:10px; font-family:'JetBrains Mono',monospace; font-size:0.65rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--forest-deep); background:var(--gold-light); padding:4px 10px; border-radius:20px;
+  }
+  .news-card .body{padding:18px; flex:1; display:flex; flex-direction:column;}
+  .news-card .date{font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--muted); margin-bottom:6px;}
+  .news-card h3{font-size:1.02rem; line-height:1.32; color:var(--forest-deep);}
+  .news-card.lead h3{font-size:1.3rem;}
+  .news-card p{font-size:0.84rem; color:var(--muted); margin-top:8px; line-height:1.55;}
+  .card-remove{position:absolute; top:8px; right:8px; width:24px; height:24px; border-radius:50%; background:var(--maroon); color:#fff; border:none; font-size:13px; cursor:pointer; display:none; z-index:2;}
+  body.editing .card-remove{display:block;}
+  .empty-note{color:var(--muted); font-size:0.86rem; padding:18px; border:1px dashed var(--line); border-radius:var(--radius); text-align:center;}
+
+  .agenda-side{
+    background:linear-gradient(165deg, var(--forest-deep), var(--forest)); border-radius:var(--radius);
+    padding:22px 20px; color:#F4EFE0; position:sticky; top:90px;
+  }
+  .agenda-side .eyebrow{color:var(--gold-light);}
+  .agenda-side h3{color:#F4EFE0; font-size:1.2rem; margin:8px 0 16px;}
+  .agenda-item{
+    display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px solid rgba(244,239,224,0.16);
+    position:relative;
+  }
+  .agenda-item:last-of-type{border-bottom:none;}
+  .agenda-item .d{font-family:'Fraunces',serif; font-weight:700; color:var(--gold-light); font-size:1.15rem; text-align:center; min-width:52px;}
+  .agenda-item .d span{display:block; font-family:'JetBrains Mono',monospace; font-size:0.62rem; color:#D9CFA8; font-weight:500;}
+  .agenda-item h4{font-size:0.92rem; color:#F4EFE0; line-height:1.3;}
+  .agenda-item .loc{font-size:0.76rem; color:#D9CFA8; margin-top:3px;}
+  .agenda-item .remove-x{background:rgba(179,65,58,0.85);}
+  .add-dashed.on-dark{border-color:rgba(224,184,92,0.55); color:var(--gold-light);}
+  .add-dashed.on-dark:hover{background:rgba(224,184,92,0.12);}
+
+  /* ---------- Galeri ---------- */
+  .galeri-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px;}
+  .galeri-item{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:4/3; background:linear-gradient(140deg, var(--forest), var(--forest-deep)); cursor:pointer;}
+  .galeri-item img{width:100%; height:100%; object-fit:cover; display:block;}
+  .galeri-item .cap{position:absolute; left:0; right:0; bottom:0; padding:8px 10px; background:linear-gradient(0deg, rgba(11,68,41,0.85), transparent); color:#F4EFE0; font-size:0.75rem; font-weight:600;}
+  .add-photo-tile{
+    border:1.5px dashed var(--forest-light); border-radius:var(--radius); aspect-ratio:4/3;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    color:var(--forest); cursor:pointer; background:transparent; font-family:inherit;
+  }
+  .add-photo-tile:hover{background:rgba(21,92,59,0.06);}
+
+  /* ---------- Modals ---------- */
+  .modal-overlay{display:none; position:fixed; inset:0; z-index:200; background:rgba(11,68,41,0.6); align-items:center; justify-content:center; padding:20px;}
+  .modal-overlay.show{display:flex;}
+  .modal-box{background:#fff; max-width:560px; width:100%; max-height:88vh; overflow-y:auto; padding:28px; border-top:4px solid var(--gold); border-radius:6px; box-shadow:0 30px 60px rgba(10,25,20,0.35);}
+  .modal-head{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;}
+  .modal-head h3{font-size:1.25rem; color:var(--forest-deep); margin-top:4px;}
+  .modal-close{background:none; border:none; font-size:1.5rem; line-height:1; cursor:pointer; color:var(--forest-deep); padding:4px 8px;}
+  .modal-close:hover{color:var(--maroon);}
+  .lightbox-overlay{display:none; position:fixed; inset:0; z-index:220; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; padding:24px;}
+  .lightbox-overlay.show{display:flex;}
+  .lightbox-overlay img{max-width:92vw; max-height:86vh; border-radius:8px;}
+  .lightbox-close{position:absolute; top:20px; right:26px; color:#fff; font-size:2rem; cursor:pointer; background:none; border:none;}
+
+  .toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--forest-deep); color:#F4EFE0;
+    padding:10px 20px; border-radius:20px; font-size:13px; opacity:0; pointer-events:none; transition:opacity .3s; z-index:300;
+  }
+  .toast.show{opacity:1;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--forest-deep); color:rgba(251,246,234,0.82); padding:56px 28px 26px;}
+  .footer-inner{max-width:1180px; margin:0 auto;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(232,200,116,0.18);}
+  .footer-grid h5{font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); margin-bottom:14px;}
+  .footer-grid ul{list-style:none; margin:0; padding:0;}
+  .footer-grid li{margin-bottom:9px; font-size:0.87rem;}
+  .footer-grid a:hover{color:var(--gold-light);}
+  .footer-brand p{font-size:0.87rem; line-height:1.6; max-width:34ch; margin-top:12px; color:rgba(251,246,234,0.65);}
+  .footer-brand .brand .b1{color:var(--cream);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-top:20px; font-size:0.76rem; color:rgba(251,246,234,0.5); font-family:'JetBrains Mono',monospace;}
+
+  @media (max-width:920px){
+    .service-grid{grid-template-columns:1fr;}
+    .field-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    nav ul{position:fixed; top:0; right:0; height:100%; width:240px; background:var(--cream); flex-direction:column; padding:90px 24px 24px; box-shadow:-8px 0 24px rgba(0,0,0,0.15); transform:translateX(100%); transition:transform .25s ease;}
+    nav ul.open{transform:translateX(0);}
+    .nav-toggle{display:block;}
+    .berita-layout{grid-template-columns:1fr;}
+    .news-grid{grid-template-columns:1fr;}
+    .agenda-side{position:static;}
+    .stats-inner{grid-template-columns:1fr 1fr; row-gap:20px;}
+    .stat{border-left:none; padding-left:0;}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+</style>
+</head>
+<body>
+
+<div class="admin-bar">
+  <span class="status" id="admin-status">Mode lihat</span>
+  <div id="admin-controls"></div>
+</div>
+
+<header class="site">
+  <div class="nav-wrap">
+    <a href="#beranda" class="brand">
+      <div class="mark site-logo"><img alt="Logo IPNU"></div>
+      <div class="brand-text">
+        <div class="b1">PC IPNU Banjar</div>
+        <div class="b2">Kab. Banjar · Kalsel</div>
+      </div>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Buka menu">&#9776;</button>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#struktur">Struktur</a></li>
+        <li><a href="#layanan">Layanan Kader</a></li>
+        <li><a href="#berita">Berita &amp; Agenda</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="beranda">
+  <div class="mark site-logo" style="width:66px;height:66px;"><img alt="Logo IPNU"></div>
+  <h1>Pimpinan Cabang Ikatan Pelajar<br>Nahdlatul Ulama</h1>
+  <div class="sub">Kabupaten Banjar</div>
+  <div class="masa">Provinsi Kalimantan Selatan &bull; Masa Khidmat 2026&ndash;2028</div>
+  <div class="cta-row">
+    <a href="#layanan" class="btn btn-primary">Layanan Kader</a>
+    <a href="#form-jas" class="btn btn-ghost">Pesan Jas IPNU</a>
+    <a href="#berita" class="btn btn-ghost">Berita &amp; Agenda</a>
+  </div>
+</section>
+
+<div class="facet-divider"></div>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="num">150+</div><div class="label">Kader Ber-KTA</div><div class="sub">Data sementara, tahap pemutakhiran</div></div>
+    <div class="stat"><div class="num">1000+</div><div class="label">Total Kader</div><div class="sub">Se-Kabupaten Banjar</div></div>
+    <div class="stat"><div class="num">10</div><div class="label">Pimpinan Anak Cabang</div><div class="sub">Tersebar di Kab. Banjar</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Pimpinan Komisariat</div><div class="sub">Se-Kabupaten Banjar</div></div>
+    <div class="stat"><div class="num">21</div><div class="label">Pimpinan Ranting</div><div class="sub">Se-Kabupaten Banjar</div></div>
+  </div>
+</section>
+
+<div class="facet-divider"></div>
+
+<!-- ===================== STRUKTUR ===================== -->
+<section class="block" id="struktur">
+  <div class="block-inner">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Organisasi</span>
+        <h2>Struktur Pimpinan Cabang</h2>
+        <p>Susunan Pimpinan Cabang IPNU Kabupaten Banjar masa khidmat 2026&ndash;2028. Masuk sebagai admin untuk mengubah nama, jabatan, atau menambah/menghapus anggota.</p>
+      </div>
+    </div>
+    <div id="struktur-content"><p class="empty-note">Memuat data pengurus&hellip;</p></div>
+  </div>
+</section>
+
+<div class="facet-divider"></div>
+
+<!-- ===================== LAYANAN ===================== -->
+<section class="block" id="layanan">
+  <div class="block-inner">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Layanan Digital</span>
+        <h2>Pusat Layanan Kader</h2>
+        <p>Fasilitas administratif digital untuk mempermudah pendampingan dan kebutuhan atribut kader IPNU se-Kabupaten Banjar. Semua pengajuan dapat langsung diproses via WhatsApp Narahubung: <a href="https://wa.me/6283853209822" target="_blank" rel="noopener" style="color:var(--maroon); font-weight:700;">0838-5320-9822</a>.</p>
+      </div>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">&#127891;</div>
+        <h3>Konsultasi Kaderisasi</h3>
+        <p>Konsultasi langsung dengan Departemen Kaderisasi PC IPNU Banjar seputar pembinaan dan jenjang kader.</p>
+        <a href="https://wa.me/6283853209822?text=Assalamu%27alaikum%2C%20saya%20ingin%20konsultasi%20seputar%20kaderisasi." target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Hubungi via WhatsApp</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128240;</div>
+        <h3>Ajukan Berita</h3>
+        <p>Koordinasi dengan Lembaga Pers dan Penerbitan (LPP) PC IPNU Kab. Banjar seputar publikasi berita ranting.</p>
+        <a href="https://wa.me/6283853209822?text=Assalamu%27alaikum%2C%20saya%20ingin%20mengajukan%20publikasi%20berita%20ke%20LPP%20PC%20IPNU%20Kab.%20Banjar." target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Hubungi via WhatsApp</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#129508;</div>
+        <h3>Pemesanan Jas IPNU</h3>
+        <p>Pesan Jas IPNU resmi untuk kebutuhan pribadi maupun ranting/PAC. Lengkapi formulir di bawah untuk memesan.</p>
+        <a href="#form-jas" class="btn btn-primary btn-sm">Isi Formulir Pemesanan</a>
+      </div>
+    </div>
+
+    <div class="form-card" id="form-jas">
+      <span class="eyebrow">Formulir Pemesanan</span>
+      <h3>Pemesanan Jas IPNU</h3>
+      <p class="form-desc">Lengkapi data berikut, lalu klik &quot;Kirim Pemesanan&quot; &mdash; pesan akan otomatis terisi ke WhatsApp Narahubung 0838-5320-9822 untuk diproses.</p>
+      <form id="form-jas-el">
+        <div class="field">
+          <label for="jas-nama">Nama Lengkap</label>
+          <input id="jas-nama" type="text" required placeholder="Nama pemesan">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="jas-asal">Asal Pimpinan</label>
+            <input id="jas-asal" type="text" required placeholder="Contoh: PR/PAC/PC IPNU ...">
+          </div>
+          <div class="field">
+            <label for="jas-ukuran">Ukuran</label>
+            <select id="jas-ukuran" required>
+              <option value="" disabled selected>Pilih ukuran</option>
+              <option value="S">S</option><option value="M">M</option><option value="L">L</option>
+              <option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Kirim Pemesanan via WhatsApp</button>
+        <div class="form-success" id="jas-success">&#10003; Membuka WhatsApp ke Narahubung 0838-5320-9822&hellip;</div>
+        <div class="form-note">*Untuk pemesanan dalam jumlah banyak, dapat langsung menghubungi 0838-5320-9822.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="facet-divider"></div>
+
+<!-- ===================== BERITA + AGENDA ===================== -->
+<section class="block" id="berita">
+  <div class="block-inner">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Publikasi</span>
+        <h2>Kabar &amp; Agenda Pimpinan Cabang</h2>
+        <p>Dinamika kegiatan dan opini kader dari ranting-ranting IPNU se-Kabupaten Banjar, lengkap dengan agenda kegiatan terdekat.</p>
+      </div>
+      <a href="https://instagram.com/pc.ipnukabbanjar" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Lihat Semua di Instagram</a>
+    </div>
+
+    <div class="berita-layout">
+      <div>
+        <div class="news-grid" id="news-grid"></div>
+        <button type="button" class="add-dashed" id="btn-tambah-berita" style="margin-top:16px;">+ Tambah Berita (khusus admin)</button>
+      </div>
+      <div class="agenda-side">
+        <span class="eyebrow">Kalender</span>
+        <h3>Agenda Kegiatan</h3>
+        <div id="agenda-list"></div>
+        <button type="button" class="add-dashed on-dark" id="btn-tambah-agenda" style="margin-top:14px;">+ Tambah Agenda (khusus admin)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="facet-divider"></div>
+
+<!-- ===================== GALERI ===================== -->
+<section class="block" id="galeri">
+  <div class="block-inner">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Dokumentasi</span>
+        <h2>Galeri Foto Kegiatan</h2>
+        <p>Dokumentasi visual kegiatan Pimpinan Cabang, PAC, PK, dan PR IPNU se-Kabupaten Banjar.</p>
+      </div>
+    </div>
+    <div class="galeri-grid" id="galeri-grid"></div>
+  </div>
+</section>
+
+<!-- ===================== MODALS ===================== -->
+<div class="modal-overlay" id="modal-berita">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><span class="eyebrow">Publikasi Cepat</span><h3>Tambah Berita Baru</h3></div>
+      <button type="button" class="modal-close" data-close="modal-berita">&times;</button>
+    </div>
+    <p class="form-desc">Berita langsung tampil di halaman ini.</p>
+    <form id="form-berita">
+      <div class="field"><label>Judul Berita</label><input id="nb-judul" type="text" required></div>
+      <div class="field-row">
+        <div class="field"><label>Tanggal</label><input id="nb-tanggal" type="text" required placeholder="Contoh: 10 Jul 2026"></div>
+        <div class="field"><label>Kategori</label>
+          <select id="nb-kategori">
+            <option>Kegiatan</option><option>Kabar Ranting</option><option>Opini Kader</option><option>Pengumuman</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Ringkasan</label><textarea id="nb-ringkasan" rows="3" required></textarea></div>
+      <div class="field-row">
+        <div class="field"><label>Link Foto (opsional)</label><input id="nb-foto" type="url" placeholder="https://..."></div>
+        <div class="field"><label>Link Berita Lengkap (opsional)</label><input id="nb-link" type="url" placeholder="https://..."></div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Terbitkan Berita</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-agenda">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><span class="eyebrow">Kalender</span><h3>Tambah Agenda Kegiatan</h3></div>
+      <button type="button" class="modal-close" data-close="modal-agenda">&times;</button>
+    </div>
+    <form id="form-agenda">
+      <div class="field-row">
+        <div class="field"><label>Tanggal</label><input id="na-tanggal" type="text" required placeholder="Contoh: 14"></div>
+        <div class="field"><label>Bulan / Tahun</label><input id="na-bulan" type="text" required placeholder="Contoh: JUL 2026"></div>
+      </div>
+      <div class="field"><label>Nama Kegiatan</label><input id="na-judul" type="text" required></div>
+      <div class="field"><label>Lokasi</label><input id="na-lokasi" type="text" required></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Tambahkan Agenda</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-galeri">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><span class="eyebrow">Dokumentasi</span><h3>Tambah Foto Kegiatan</h3></div>
+      <button type="button" class="modal-close" data-close="modal-galeri">&times;</button>
+    </div>
+    <form id="form-galeri">
+      <div class="field"><label>Unggah dari Perangkat</label><input id="ng-file" type="file" accept="image/*"></div>
+      <div class="field"><label>Atau Link Foto</label><input id="ng-url" type="url" placeholder="https://..."></div>
+      <div class="field"><label>Keterangan Foto</label><input id="ng-caption" type="text" required placeholder="Contoh: Diklat Kepemimpinan Dasar, 2026"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Tambahkan Foto</button>
+    </form>
+  </div>
+</div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Tutup">&times;</button>
+  <img id="lightbox-img" src="" alt="Foto kegiatan">
+</div>
+
+<footer id="kontak">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="mark site-logo" style="width:42px;height:42px;"><img alt="Logo IPNU"></div>
+          <div class="brand-text"><div class="b1">PC IPNU Banjar</div><div class="b2">Kab. Banjar · Kalsel</div></div>
+        </div>
+        <p>Pimpinan Cabang Ikatan Pelajar Nahdlatul Ulama Kabupaten Banjar. Wadah pergerakan pelajar Nahdliyin menuju generasi yang berilmu dan berkhidmat.</p>
+      </div>
+      <div>
+        <h5>Organisasi</h5>
+        <ul>
+          <li><a href="#struktur">Struktur Pimpinan</a></li>
+          <li><a href="https://wa.me/6283853209822" target="_blank" rel="noopener">Dokumen Resmi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Publikasi</h5>
+        <ul>
+          <li><a href="#berita">Kabar &amp; Agenda</a></li>
+          <li><a href="#galeri">Galeri Foto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Kontak</h5>
+        <ul>
+          <li>Sekretariat: Martapura, Kab. Banjar &mdash; <a href="https://maps.app.goo.gl/UQ3YWGtd8ba6nVp68" target="_blank" rel="noopener">lokasi</a></li>
+          <li>WhatsApp Narahubung: <a href="https://wa.me/6283853209822" target="_blank" rel="noopener">0838-5320-9822</a></li>
+          <li>Instagram: <a href="https://instagram.com/pc.ipnukabbanjar" target="_blank" rel="noopener">@pc.ipnukabbanjar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 PC IPNU Kabupaten Banjar. Hak Cipta Dilindungi.</span>
+      <span>Belajar &middot; Berjuang &middot; Bertaqwa</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   Data awal (sesuai SK Pimpinan Cabang) — semua bisa diubah lewat mode
+   admin, dan tersimpan otomatis di browser (localStorage) di perangkat
+   yang sedang login sebagai admin.
+===================================================================== */
+const ADMIN_PASSWORD = 'ipnubanjar2026'; // silakan ganti kata sandi ini
+let isAdmin = false;
+
+/* Logo resmi PC IPNU Kab. Banjar (disematkan sekali, dipakai ulang di header/hero/footer) */
+const LOGO_DATA_URI = 'data:image/jpeg;base64,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';
+document.querySelectorAll('.site-logo img').forEach(img => { img.src = LOGO_DATA_URI; });
+const favEl = document.getElementById('site-favicon'); if (favEl) favEl.href = LOGO_DATA_URI;
+
+const LS = {
+  struktur: 'ipnuBanjar_struktur',
+  berita:   'ipnuBanjar_berita',
+  agenda:   'ipnuBanjar_agenda',
+  galeri:   'ipnuBanjar_galeri'
+};
+
+let uidCounter = Date.now() % 100000;
+const uid = (p) => p + (uidCounter++);
+
+const DEFAULT_STRUKTUR = {
+  pelindung: "PCNU Kabupaten Banjar",
+  pembina: [
+    "H. Saidi Mansyur, S.I.Kom","H. Said Idrus Al-Habsyie","Dr. H. Muhammad Husen, M.Ag",
+    "KH. Hasanuddin Badruddin","KH. Muhammad Naufal Rosyad","Dr. H. A. Fauzan Saleh, M.Ag",
+    "KH. Syamsul Bahri Ardy","Ust. Nuryadi Basri S.Ag","Drs. Izzudin, M.Ag","H. A. Fauzan Asniah, MM",
+    "H. Jatim","Muhammad Jauhari, S.Pd.I","Muhammad Zaini, M.Pd","Moh. Burhanuddin, S.Ip",
+    "Maulana Nur, S.Pd","Muhammad HS","M. Syafii Rifqi, S.Pd.I","Ustadz Muhammad HR, S.Pd.I",
+    "Abdussalam, S.Pd.I","Hamdiani, M.Pd","Muhammad Wahyu Pratama, S.H","Kasman S.Pd",
+    "Abdul Muiz","Muhammad Arsyad Al Asyarie S.H"
+  ],
+  tiers: [
+    { id:"t1", title:"Badan Pengurus Harian", groups:[
+      { id:"g1", title:"Ketua & Wakil Ketua", people:[
+        {id:"p1",name:"Rahmadi",role:"Ketua"},{id:"p2",name:"Muhammad Raihan",role:"Wakil Ketua"},
+        {id:"p3",name:"Ahmad Rifa'i",role:"Wakil Ketua"},{id:"p4",name:"Ahmad Ghofur",role:"Wakil Ketua"},
+        {id:"p5",name:"Aditya",role:"Wakil Ketua"},{id:"p6",name:"Muhammad Ridho",role:"Wakil Ketua"}
+      ]},
+      { id:"g2", title:"Sekretaris & Wakil Sekretaris", people:[
+        {id:"p7",name:"Maulana Ahmad Al Kautsar",role:"Sekretaris"},{id:"p8",name:"Asramani",role:"Wakil Sekretaris"},
+        {id:"p9",name:"Aspi",role:"Wakil Sekretaris"},{id:"p10",name:"Rais Azka Arifin",role:"Wakil Sekretaris"},
+        {id:"p11",name:"M. Sajid Murofi",role:"Wakil Sekretaris"},{id:"p12",name:"Ahmad Muzamil",role:"Wakil Sekretaris"}
+      ]},
+      { id:"g3", title:"Bendahara & Wakil Bendahara", people:[
+        {id:"p13",name:"Muhammad Hafi",role:"Bendahara"},{id:"p14",name:"Muhammad Rohi",role:"Wakil Bendahara"},
+        {id:"p15",name:"Muhammad Subhan",role:"Wakil Bendahara"},{id:"p16",name:"Muhammad Ridho",role:"Wakil Bendahara"},
+        {id:"p17",name:"Lutfillah",role:"Wakil Bendahara"},{id:"p18",name:"Muhammad Ihsan",role:"Wakil Bendahara"}
+      ]}
+    ]},
+    { id:"t2", title:"Departemen-Departemen", groups:[
+      { id:"g4", title:"Departemen Pengembangan Organisasi", people:[
+        {id:"p19",name:"Muhammad Anas Al Fajari",role:"Koordinator"},{id:"p20",name:"Mahammad Fadlan Arif",role:"Anggota"},
+        {id:"p21",name:"M. Amin Badali",role:"Anggota"},{id:"p22",name:"Muhammad Hafi",role:"Anggota"}
+      ]},
+      { id:"g5", title:"Departemen Kaderisasi", people:[
+        {id:"p23",name:"Sholahuddin",role:"Koordinator"},{id:"p24",name:"Lutfi Johan Saputra",role:"Anggota"},
+        {id:"p25",name:"Raihan Sahreza",role:"Anggota"}
+      ]},
+      { id:"g6", title:"Departemen Jaringan Sekolah Dan Pesantren", people:[
+        {id:"p26",name:"Taufikurrohman",role:"Koordinator"},{id:"p27",name:"Muhammad Maqdis",role:"Anggota"},
+        {id:"p28",name:"Riduan",role:"Anggota"},{id:"p29",name:"M. Abrar",role:"Anggota"}
+      ]},
+      { id:"g7", title:"Departemen Dakwah Dan Kajian Islam", people:[
+        {id:"p30",name:"M. Arsyad",role:"Koordinator"},{id:"p31",name:"Muhammad Raihan",role:"Anggota"},
+        {id:"p32",name:"Khotif Aufa",role:"Anggota"},{id:"p33",name:"Subhan Nur",role:"Anggota"}
+      ]},
+      { id:"g8", title:"Departemen Seni Budaya, Minat Dan Bakat", people:[
+        {id:"p34",name:"M. Muqofi",role:"Koordinator"},{id:"p35",name:"Muhammad Abdan",role:"Anggota"},
+        {id:"p36",name:"Muhsin",role:"Anggota"},{id:"p37",name:"Muhammad Zaini",role:"Anggota"}
+      ]}
+    ]},
+    { id:"t3", title:"Lembaga-Lembaga", groups:[
+      { id:"g9", title:"CBP - Komandan & Wakil Komandan", people:[
+        {id:"p38",name:"Muhammad Lutfi Anshari",role:"Komandan"},{id:"p39",name:"M. Zaini Abdl Rozak",role:"Wakil Komandan"}
+      ]},
+      { id:"g10", title:"CBP - Divisi Administrasi", people:[
+        {id:"p40",name:"Fadillah",role:"Kepala"},{id:"p41",name:"Khairuddin",role:"Anggota"}
+      ]},
+      { id:"g11", title:"CBP - Divisi Logistik", people:[
+        {id:"p42",name:"Muhammad Abdillah",role:"Kepala"},{id:"p43",name:"Muhammad Budiman",role:"Anggota"}
+      ]},
+      { id:"g12", title:"CBP - Divisi Pendidikan Dan Pelatihan", people:[
+        {id:"p44",name:"Ahmad Badali",role:"Kepala"},{id:"p45",name:"Lutfhi Anshori",role:"Anggota"}
+      ]},
+      { id:"g13", title:"CBP - Divisi Sosial Kemanusiaan", people:[
+        {id:"p46",name:"Najmuddin",role:"Kepala"},{id:"p47",name:"Wahid",role:"Anggota"}
+      ]},
+      { id:"g14", title:"Lembaga Pers Dan Penerbitan (LPP)", people:[
+        {id:"p48",name:"Romi Rahaf",role:"Direktur"},{id:"p49",name:"Muhammad Makmur",role:"Sekretaris"},
+        {id:"p50",name:"Muhammad Ramli",role:"Anggota"}
+      ]},
+      { id:"g15", title:"Lembaga Ekonomi Kewirausahaan Dan Koperasi (LEKAS)", people:[
+        {id:"p51",name:"Achmad",role:"Direktur"},{id:"p52",name:"Muhammad Rosyid",role:"Sekretaris"},
+        {id:"p53",name:"Muhammad Khairi",role:"Anggota"}
+      ]},
+      { id:"g16", title:"Lembaga Komunikasi Perguruan Tinggi (LKPT)", people:[
+        {id:"p54",name:"Muhammad Syafriansyah",role:"Direktur"},{id:"p55",name:"M. Amri Ridhoni",role:"Sekretaris"},
+        {id:"p56",name:"Muhammad Hafi",role:"Anggota"}
+      ]}
+    ]},
+    { id:"t4", title:"Badan-Badan", groups:[
+      { id:"g17", title:"1) Badan Student Crisis Center (SCC)", people:[
+        {id:"p57",name:"Muhammad Rizky",role:"Direktur"},{id:"p58",name:"Muhammad Azmi",role:"Sekretaris"}
+      ]},
+      { id:"g18", title:"2) Badan Student Reset Center (SRC)", people:[
+        {id:"p59",name:"Muhammad Hafiz",role:"Direktur"}
+      ]}
+    ]}
+  ]
+};
+
+const DEFAULT_AGENDA = [
+  {id:"a1", tanggal:"14", bulan:"JUL 2026", judul:"Rapat Kerja Cabang", lokasi:"Sekretariat PC IPNU, Martapura"},
+  {id:"a2", tanggal:"21", bulan:"JUL 2026", judul:"Pelantikan Pimpinan Ranting Baru", lokasi:"Aula Kecamatan, Kab. Banjar"},
+  {id:"a3", tanggal:"02", bulan:"AGU 2026", judul:"Diklat Kepemimpinan Dasar", lokasi:"Pondok Pesantren mitra"}
+];
+
+let dataStruktur = null;
+let dataBerita = [];
+let dataAgenda = [];
+let dataGaleri = [];
+
+function initials(name){
+  const parts = (name||"").trim().split(/\s+/).filter(Boolean);
+  if(parts.length===0) return "?";
+  if(parts.length===1) return parts[0].slice(0,2).toUpperCase();
+  return (parts[0][0]+parts[1][0]).toUpperCase();
+}
+function escapeHTML(str){ const d=document.createElement('div'); d.textContent = str||''; return d.innerHTML; }
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ---------------- Local storage helpers ---------------- */
+function loadKey(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){ return fallback; }
+}
+function saveKey(key, value){
+  try{ localStorage.setItem(key, JSON.stringify(value)); return true; }
+  catch(e){ showToast('Gagal menyimpan di perangkat ini'); return false; }
+}
+
+/* ---------------- Admin login/logout ---------------- */
+function login(){
+  const pass = prompt('Masukkan kata sandi admin:');
+  if(pass === null) return;
+  if(pass === ADMIN_PASSWORD){
+    isAdmin = true;
+    document.body.classList.add('editing');
+    showToast('Mode edit admin aktif di perangkat ini');
+    renderAdminBar(); renderAll();
+  }else{
+    showToast('Kata sandi salah');
+  }
+}
+function logout(){
+  isAdmin = false;
+  document.body.classList.remove('editing');
+  renderAdminBar(); renderAll();
+}
+function renderAdminBar(){
+  const statusEl = document.getElementById('admin-status');
+  const controlsEl = document.getElementById('admin-controls');
+  if(isAdmin){
+    statusEl.textContent = 'Mode edit admin aktif — perubahan tersimpan di perangkat ini';
+    controlsEl.innerHTML = '<button class="btn-mini danger" onclick="resetStruktur()">Reset Struktur ke SK Awal</button><button class="btn-mini solid" onclick="logout()">Keluar Mode Admin</button>';
+  }else{
+    statusEl.textContent = 'Mode lihat — masuk sebagai admin untuk mengubah konten';
+    controlsEl.innerHTML = '<button class="btn-mini solid" onclick="login()">Masuk sebagai Admin</button>';
+  }
+}
+function renderAll(){ renderStruktur(); renderBerita(); renderAgenda(); renderGaleri(); }
+
+/* ===================================================================
+   STRUKTUR
+=================================================================== */
+function personCard(groupId, p){
+  const hasPhoto = !!p.foto;
+  const avatarStyle = hasPhoto ? ' style="background-image:url(\'' + p.foto.replace(/'/g,'') + '\')"' : '';
+  return '<div class="person-card">' +
+      (isAdmin?'<button class="remove-x" onclick="removePerson(\''+groupId+'\',\''+p.id+'\')" title="Hapus">&times;</button>':'') +
+      '<div class="p-avatar" onclick="'+(isAdmin?'pickPhoto(\''+groupId+'\',\''+p.id+'\')':'')+'"'+avatarStyle+'>'+(hasPhoto?'':escapeHTML(initials(p.name)))+'</div>' +
+      '<div class="p-info">' +
+        '<h4 '+(isAdmin?'contenteditable="true" onblur="updatePersonField(\''+groupId+'\',\''+p.id+'\',\'name\',this.textContent.trim())"':'')+'>'+escapeHTML(p.name)+'</h4>' +
+        '<div class="role" '+(isAdmin?'contenteditable="true" onblur="updatePersonField(\''+groupId+'\',\''+p.id+'\',\'role\',this.textContent.trim())"':'')+'>'+escapeHTML(p.role)+'</div>' +
+      '</div>' +
+    '</div>';
+}
+function groupBlock(tierId, g){
+  return '<div class="kelompok">' +
+      '<div class="kelompok-judul">' +
+        '<span class="title-text" '+(isAdmin?'contenteditable="true" onblur="updateGroupTitle(\''+tierId+'\',\''+g.id+'\',this.textContent.trim())"':'')+'>'+escapeHTML(g.title)+'</span>' +
+        (isAdmin?'<button class="remove-group-btn" onclick="removeGroup(\''+tierId+'\',\''+g.id+'\')">Hapus kelompok</button>':'') +
+      '</div>' +
+      '<div class="people-grid">' +
+        g.people.map(p=>personCard(g.id,p)).join('') +
+        (isAdmin?'<button class="add-dashed" onclick="addPerson(\''+g.id+'\')">+ Tambah Anggota</button>':'') +
+      '</div>' +
+    '</div>';
+}
+function tierBlock(t){
+  return '<div class="tier-header">' +
+      '<span class="tag title-text" '+(isAdmin?'contenteditable="true" onblur="updateTierTitle(\''+t.id+'\',this.textContent.trim())"':'')+'>'+escapeHTML(t.title)+'</span>' +
+      '<div class="rule"></div>' +
+      (isAdmin?'<button class="remove-group-btn" onclick="removeTier(\''+t.id+'\')">Hapus bagian</button>':'') +
+    '</div>' +
+    t.groups.map(g=>groupBlock(t.id,g)).join('') +
+    (isAdmin?'<button class="add-dashed" onclick="addGroup(\''+t.id+'\')">+ Tambah Kelompok di bagian &quot;'+escapeHTML(t.title)+'&quot;</button>':'');
+}
+function pembinaBlock(){
+  return '<div class="tier-header"><span class="tag">Pelindung &amp; Pembina</span><div class="rule"></div></div>' +
+    '<div class="pembina-box">' +
+      '<div class="label">Pelindung</div>' +
+      '<p '+(isAdmin?'contenteditable="true" onblur="dataStruktur.pelindung=this.textContent.trim();saveKey(LS.struktur,dataStruktur)"':'')+'>'+escapeHTML(dataStruktur.pelindung)+'</p>' +
+      '<div class="label">Pembina</div>' +
+      '<div class="pembina-list">' +
+        dataStruktur.pembina.map((nm,i)=>
+          '<div><span '+(isAdmin?'contenteditable="true" onblur="dataStruktur.pembina['+i+']=this.textContent.trim();saveKey(LS.struktur,dataStruktur)"':'')+'>'+(i+1)+'. '+escapeHTML(nm)+'</span>' +
+          (isAdmin?'<button class="remove-x" style="position:static;display:inline-flex;align-items:center;justify-content:center;" onclick="dataStruktur.pembina.splice('+i+',1);saveKey(LS.struktur,dataStruktur);renderStruktur()">&times;</button>':'') +
+          '</div>'
+        ).join('') +
+      '</div>' +
+      (isAdmin?'<button class="add-dashed" style="margin-top:12px;" onclick="const n=prompt(\'Nama pembina:\'); if(n){dataStruktur.pembina.push(n);saveKey(LS.struktur,dataStruktur);renderStruktur();}">+ Tambah Pembina</button>':'') +
+    '</div>';
+}
+function renderStruktur(){
+  const el = document.getElementById('struktur-content');
+  if(!dataStruktur){ el.innerHTML = '<p class="empty-note">Memuat data pengurus&hellip;</p>'; return; }
+  el.innerHTML = pembinaBlock() + dataStruktur.tiers.map(t=>tierBlock(t)).join('') +
+    (isAdmin?'<button class="add-dashed add-tier-btn" onclick="addTier()">+ Tambah Bagian Baru</button>':'');
+}
+function updatePersonField(groupId, personId, field, value){
+  for(const tier of dataStruktur.tiers){
+    const g = tier.groups.find(g=>g.id===groupId);
+    if(g){ const p = g.people.find(p=>p.id===personId); if(p){ p[field]=value; saveKey(LS.struktur,dataStruktur); } }
+  }
+}
+function addPerson(groupId){
+  const name = prompt('Nama lengkap:'); if(!name) return;
+  const role = prompt('Jabatan:') || '';
+  for(const tier of dataStruktur.tiers){
+    const g = tier.groups.find(g=>g.id===groupId);
+    if(g){ g.people.push({id:uid('p'),name,role}); break; }
+  }
+  saveKey(LS.struktur,dataStruktur); renderStruktur();
+}
+function removePerson(groupId, personId){
+  for(const tier of dataStruktur.tiers){
+    const g = tier.groups.find(g=>g.id===groupId);
+    if(g){ g.people = g.people.filter(p=>p.id!==personId); break; }
+  }
+  saveKey(LS.struktur,dataStruktur); renderStruktur();
+}
+function updateGroupTitle(tierId, groupId, value){
+  const tier = dataStruktur.tiers.find(t=>t.id===tierId);
+  const g = tier.groups.find(g=>g.id===groupId);
+  if(g){ g.title = value; saveKey(LS.struktur,dataStruktur); }
+}
+function addGroup(tierId){
+  const title = prompt('Nama kelompok / bagian baru:'); if(!title) return;
+  const tier = dataStruktur.tiers.find(t=>t.id===tierId);
+  tier.groups.push({id:uid('g'),title,people:[]});
+  saveKey(LS.struktur,dataStruktur); renderStruktur();
+}
+function removeGroup(tierId, groupId){
+  if(!confirm('Hapus kelompok ini beserta seluruh anggotanya?')) return;
+  const tier = dataStruktur.tiers.find(t=>t.id===tierId);
+  tier.groups = tier.groups.filter(g=>g.id!==groupId);
+  saveKey(LS.struktur,dataStruktur); renderStruktur();
+}
+function updateTierTitle(tierId, value){
+  const tier = dataStruktur.tiers.find(t=>t.id===tierId);
+  if(tier){ tier.title = value; saveKey(LS.struktur,dataStruktur); }
+}
+function addTier(){
+  const title = prompt('Nama bagian besar baru (misal: "Badan Otonom"):'); if(!title) return;
+  dataStruktur.tiers.push({id:uid('t'),title,groups:[]});
+  saveKey(LS.struktur,dataStruktur); renderStruktur();
+}
+function removeTier(tierId){
+  if(!confirm('Hapus seluruh bagian ini beserta isinya?')) return;
+  dataStruktur.tiers = dataStruktur.tiers.filter(t=>t.id!==tierId);
+  saveKey(LS.struktur,dataStruktur); renderStruktur();
+}
+function resetStruktur(){
+  if(!confirm('Kembalikan seluruh data struktur ke susunan awal sesuai SK?')) return;
+  dataStruktur = JSON.parse(JSON.stringify(DEFAULT_STRUKTUR));
+  saveKey(LS.struktur,dataStruktur); renderStruktur();
+}
+
+/* Ganti foto pengurus (kompresi ringan lalu simpan sebagai dataURL) */
+const hiddenFileInput = document.createElement('input');
+hiddenFileInput.type='file'; hiddenFileInput.accept='image/*'; hiddenFileInput.style.display='none';
+document.body.appendChild(hiddenFileInput);
+let activePickTarget = null;
+function pickPhoto(groupId, personId){
+  if(!isAdmin) return;
+  activePickTarget = {groupId, personId};
+  hiddenFileInput.click();
+}
+hiddenFileInput.addEventListener('change', function(){
+  const file = hiddenFileInput.files[0];
+  if(!file || !activePickTarget) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const img = new Image();
+    img.onload = function(){
+      const size=200; const canvas=document.createElement('canvas');
+      canvas.width=size; canvas.height=size;
+      const ctx = canvas.getContext('2d');
+      const scale = Math.max(size/img.width, size/img.height);
+      const w=img.width*scale, h=img.height*scale;
+      ctx.drawImage(img,(size-w)/2,(size-h)/2,w,h);
+      const dataUrl = canvas.toDataURL('image/jpeg',0.6);
+      const {groupId, personId} = activePickTarget;
+      for(const tier of dataStruktur.tiers){
+        const g = tier.groups.find(g=>g.id===groupId);
+        if(g){ const p=g.people.find(p=>p.id===personId); if(p){ p.foto = dataUrl; } }
+      }
+      saveKey(LS.struktur,dataStruktur); renderStruktur();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  hiddenFileInput.value='';
+});
+
+/* ===================================================================
+   BERITA
+=================================================================== */
+function newsCardHTML(item, isLead){
+  const thumbStyle = item.foto ? ' style="background-image:url(\'' + item.foto.replace(/'/g,'') + '\')"' : '';
+  const inner =
+    (isAdmin?'<button class="card-remove" onclick="removeBerita(\''+item.id+'\')" title="Hapus">&times;</button>':'') +
+    '<div class="thumb"'+thumbStyle+'><span class="cat">'+escapeHTML(item.kategori||'Berita')+'</span></div>' +
+    '<div class="body">' +
+      '<span class="date">'+escapeHTML(item.tanggal)+'</span>' +
+      '<h3>'+escapeHTML(item.judul)+'</h3>' +
+      '<p>'+escapeHTML(item.ringkasan)+'</p>' +
+    '</div>';
+  const cls = 'news-card' + (isLead ? ' lead' : '');
+  if(item.link){ return '<a class="'+cls+'" href="'+item.link+'" target="_blank" rel="noopener">'+inner+'</a>'; }
+  return '<div class="'+cls+'">'+inner+'</div>';
+}
+function renderBerita(){
+  const grid = document.getElementById('news-grid');
+  const btn = document.getElementById('btn-tambah-berita');
+  btn.style.display = isAdmin ? 'flex' : 'none';
+  if(!dataBerita.length){
+    grid.innerHTML = '<div class="empty-note">' + (isAdmin ? 'Belum ada berita. Klik &quot;+ Tambah Berita&quot; untuk mulai mempublikasikan.' : 'Nantikan kabar terbaru dari PC IPNU Kab. Banjar.') + '</div>';
+    return;
+  }
+  grid.innerHTML = dataBerita.map((item,i)=>newsCardHTML(item, i===0)).join('');
+}
+function removeBerita(id){
+  if(!confirm('Hapus berita ini?')) return;
+  dataBerita = dataBerita.filter(b=>b.id!==id);
+  saveKey(LS.berita, dataBerita); renderBerita();
+}
+
+/* ===================================================================
+   AGENDA
+=================================================================== */
+function agendaItemHTML(item){
+  return '<div class="agenda-item">' +
+      (isAdmin?'<button class="remove-x" onclick="removeAgenda(\''+item.id+'\')" title="Hapus">&times;</button>':'') +
+      '<div class="d">'+escapeHTML(item.tanggal)+'<span>'+escapeHTML(item.bulan)+'</span></div>' +
+      '<div><h4>'+escapeHTML(item.judul)+'</h4><div class="loc">'+escapeHTML(item.lokasi)+'</div></div>' +
+    '</div>';
+}
+function renderAgenda(){
+  const list = document.getElementById('agenda-list');
+  const btn = document.getElementById('btn-tambah-agenda');
+  btn.style.display = isAdmin ? 'flex' : 'none';
+  if(!dataAgenda.length){
+    list.innerHTML = '<p style="color:#D9CFA8; font-size:0.85rem;">Belum ada agenda mendatang.</p>';
+    return;
+  }
+  list.innerHTML = dataAgenda.map(agendaItemHTML).join('');
+}
+function removeAgenda(id){
+  if(!confirm('Hapus agenda ini?')) return;
+  dataAgenda = dataAgenda.filter(a=>a.id!==id);
+  saveKey(LS.agenda, dataAgenda); renderAgenda();
+}
+
+/* ===================================================================
+   GALERI
+=================================================================== */
+function galeriItemHTML(item){
+  return '<div class="galeri-item" onclick="openLightbox(\''+item.foto.replace(/'/g,"\\'")+'\')">' +
+      (isAdmin?'<button class="card-remove" style="display:block;" onclick="event.stopPropagation();removeGaleri(\''+item.id+'\')" title="Hapus">&times;</button>':'') +
+      '<img src="'+item.foto+'" alt="'+escapeHTML(item.caption)+'" loading="lazy">' +
+      '<div class="cap">'+escapeHTML(item.caption)+'</div>' +
+    '</div>';
+}
+function renderGaleri(){
+  const grid = document.getElementById('galeri-grid');
+  let html = dataGaleri.map(galeriItemHTML).join('');
+  if(isAdmin){
+    html += '<button type="button" class="add-photo-tile" onclick="openModal(\'modal-galeri\')"><span style="font-size:22px;">+</span><span style="font-size:12.5px;font-weight:700;">Tambah Foto</span></button>';
+  }
+  grid.innerHTML = html || '<div class="empty-note">Belum ada foto kegiatan.</div>';
+}
+function removeGaleri(id){
+  if(!confirm('Hapus foto ini?')) return;
+  dataGaleri = dataGaleri.filter(g=>g.id!==id);
+  saveKey(LS.galeri, dataGaleri); renderGaleri();
+}
+function openLightbox(src){
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('show');
+}
+document.getElementById('lightbox-close').addEventListener('click', ()=>document.getElementById('lightbox').classList.remove('show'));
+document.getElementById('lightbox').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('show'); });
+
+/* ---------------- Modal helpers ---------------- */
+function openModal(id){ document.getElementById(id).classList.add('show'); }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+document.querySelectorAll('.modal-close').forEach(btn=>{ btn.addEventListener('click', ()=>closeModal(btn.dataset.close)); });
+document.querySelectorAll('.modal-overlay').forEach(ov=>{ ov.addEventListener('click', (e)=>{ if(e.target===ov) ov.classList.remove('show'); }); });
+document.getElementById('btn-tambah-berita').addEventListener('click', ()=>{
+  if(!isAdmin){ showToast('Masuk sebagai admin untuk menambah berita'); return; }
+  openModal('modal-berita');
+});
+document.getElementById('btn-tambah-agenda').addEventListener('click', ()=>{
+  if(!isAdmin){ showToast('Masuk sebagai admin untuk menambah agenda'); return; }
+  openModal('modal-agenda');
+});
+
+/* ---------------- Form: Tambah Berita ---------------- */
+document.getElementById('form-berita').addEventListener('submit', function(e){
+  e.preventDefault();
+  const item = {
+    id: uid('b'),
+    judul: document.getElementById('nb-judul').value.trim(),
+    tanggal: document.getElementById('nb-tanggal').value.trim(),
+    kategori: document.getElementById('nb-kategori').value,
+    ringkasan: document.getElementById('nb-ringkasan').value.trim(),
+    foto: document.getElementById('nb-foto').value.trim(),
+    link: document.getElementById('nb-link').value.trim()
+  };
+  dataBerita.unshift(item);
+  saveKey(LS.berita, dataBerita);
+  renderBerita(); closeModal('modal-berita'); this.reset();
+  showToast('Berita berhasil dipublikasikan');
+});
+
+/* ---------------- Form: Tambah Agenda ---------------- */
+document.getElementById('form-agenda').addEventListener('submit', function(e){
+  e.preventDefault();
+  const item = {
+    id: uid('a'),
+    tanggal: document.getElementById('na-tanggal').value.trim(),
+    bulan: document.getElementById('na-bulan').value.trim(),
+    judul: document.getElementById('na-judul').value.trim(),
+    lokasi: document.getElementById('na-lokasi').value.trim()
+  };
+  dataAgenda.push(item);
+  saveKey(LS.agenda, dataAgenda);
+  renderAgenda(); closeModal('modal-agenda'); this.reset();
+  showToast('Agenda berhasil ditambahkan');
+});
+
+/* ---------------- Form: Tambah Foto Galeri ---------------- */
+document.getElementById('form-galeri').addEventListener('submit', function(e){
+  e.preventDefault();
+  const file = document.getElementById('ng-file').files[0];
+  const url = document.getElementById('ng-url').value.trim();
+  const caption = document.getElementById('ng-caption').value.trim();
+  const formEl = this;
+
+  function finish(fotoSrc){
+    const item = { id: uid('g'), foto: fotoSrc, caption };
+    dataGaleri.unshift(item);
+    saveKey(LS.galeri, dataGaleri);
+    renderGaleri(); closeModal('modal-galeri'); formEl.reset();
+    showToast('Foto berhasil ditambahkan');
+  }
+
+  if(file){
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        const maxW = 900;
+        const scale = Math.min(1, maxW / img.width);
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width * scale; canvas.height = img.height * scale;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        finish(canvas.toDataURL('image/jpeg', 0.75));
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }else if(url){
+    finish(url);
+  }else{
+    alert('Unggah foto dari perangkat atau isi link foto terlebih dahulu.');
+  }
+});
+
+/* ---------------- Form: Pesan Jas IPNU ---------------- */
+const NARAHUBUNG_WA = '6283853209822';
+document.getElementById('form-jas-el').addEventListener('submit', function(e){
+  e.preventDefault();
+  const nama = document.getElementById('jas-nama').value.trim();
+  const asal = document.getElementById('jas-asal').value.trim();
+  const ukuran = document.getElementById('jas-ukuran').value;
+
+  const pesan = "Assalamu'alaikum, saya ingin memesan Jas IPNU.%0A%0A" +
+    "Nama: " + encodeURIComponent(nama) + "%0A" +
+    "Asal Pimpinan: " + encodeURIComponent(asal) + "%0A" +
+    "Ukuran: " + encodeURIComponent(ukuran) + "%0A%0A" +
+    "Mohon informasi selanjutnya. Terima kasih.";
+
+  const successEl = document.getElementById('jas-success');
+  successEl.classList.add('show');
+  const btn = this.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.style.opacity = '0.6';
+
+  window.open('https://wa.me/' + NARAHUBUNG_WA + '?text=' + pesan, '_blank', 'noopener');
+
+  setTimeout(()=>{ successEl.classList.remove('show'); btn.disabled=false; btn.style.opacity='1'; this.reset(); }, 2500);
+});
+
+/* ---------------- Nav toggle (mobile) ---------------- */
+const navToggle = document.getElementById('nav-toggle');
+const navList = document.getElementById('nav-list');
+navToggle.addEventListener('click', ()=> navList.classList.toggle('open'));
+navList.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> navList.classList.remove('open')));
+
+/* ---------------- Init ---------------- */
+(function init(){
+  renderAdminBar();
+  dataStruktur = loadKey(LS.struktur, JSON.parse(JSON.stringify(DEFAULT_STRUKTUR)));
+  dataBerita = loadKey(LS.berita, []);
+  dataAgenda = loadKey(LS.agenda, DEFAULT_AGENDA);
+  dataGaleri = loadKey(LS.galeri, []);
+  renderAll();
+})();
+</script>
+</body>
+</html>
